@@ -26,7 +26,7 @@ jobs:
       - name: Authenticate to Salesforce (JWT)
         run: |
           echo "${{ secrets.SF_JWT_KEY }}" > server.key # Saves the JWT key from secrets into a file
-          sf auth jwt grant --client-id ${{ secrets.SF_CONSUMER_KEY }} --jwt-key-file private.pem --username ${{ secrets.SF_USERNAME }} --instance-url https://test.salesforce.com
+          sf auth jwt grant --client-id ${{ secrets.SF_CONSUMER_KEY }} --jwt-key-file private.pem --username ${{ secrets.SF_USERNAME }} --instance-url https://lambtonca-dev-ed.lightning.force.com
 
       - name: Debug Git Log
         run: |
