@@ -26,7 +26,7 @@ jobs:
       - name: Authenticate to Salesforce (JWT)
         run: |
           echo "${{ secrets.SF_JWT_KEY }}" > server.key # Saves the JWT key from secrets into a file
-          sf auth jwt grant --client-id ${{ secrets.SF_CONSUMER_KEY }} --jwt-key-file private.pem --username ${{ secrets.SF_USERNAME }} --instance-url https://lambtonca-dev-ed.my.salesforce.com
+          sf auth jwt grant --client-id ${{ secrets.SF_CONSUMER_KEY }} --jwt-key-file private.pem --username ${{ secrets.SF_USERNAME }} --instance-url https://lambtonca-dev-ed.my.salesforce.com --alias SFDC_v1
 
       - name: Debug Git Log
         run: |
@@ -36,4 +36,4 @@ jobs:
       - name: Validate the changes mentioned in package
         id: changes
         run: |
-          sf project deploy validate --manifest manifest/package.xml
+          sf project deploy validate --manifest manifest/package.xml -o SFDC_v1
